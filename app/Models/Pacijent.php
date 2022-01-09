@@ -10,6 +10,15 @@ class Pacijent extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ime',
+        'prezime',
+        'broj_kartona',
+        'adresa',
+        'grad',
+        'zubar_id'
+    ];
+
     public function zubar()
     {
         return $this->belongsTo(Zubar::class);

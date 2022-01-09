@@ -11,6 +11,14 @@ class Zubar extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ime',
+        'prezime',
+        'godine_iskustva',
+        'ord_id'
+    ];
+
+
     public function ordinacija()
     {
         return $this->belongsTo(Ordinacija::class);

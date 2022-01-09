@@ -10,6 +10,13 @@ class Ordinacija extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'naziv_ordinacije',
+        'kapacitet',
+        'vlasnik',
+        'website'
+    ];
+
     public function zubari()
     {
         return $this->hasMany(Zubar::class);
