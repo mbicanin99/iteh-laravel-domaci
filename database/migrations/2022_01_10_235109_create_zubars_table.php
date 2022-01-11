@@ -18,7 +18,7 @@ class CreateZubarsTable extends Migration
             $table->string('ime');
             $table->string('prezime');
             $table->integer('godIskustva');
-            $table->foreignId('ord_id')->constrained('ordinacijas');
+            $table->foreignId('ordinacija_id')->constrained('ordinacijas');
             $table->timestamps();
         });
     }

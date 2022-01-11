@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class GodineIskustvaZubar extends Migration
+class ObrisiDrzavu extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class GodineIskustvaZubar extends Migration
      */
     public function up()
     {
-        Schema::table('zubars', function (Blueprint $table) {
-            $table->renameColumn('godIskustva', 'godine_iskustva');
+        Schema::table('pacijents', function (Blueprint $table) {
+            $table->dropColumn('drzava');
         });
     }
 
@@ -25,8 +25,10 @@ class GodineIskustvaZubar extends Migration
      */
     public function down()
     {
-        Schema::table('zubars', function (Blueprint $table) {
-            $table->renameColumn('godine_iskustva', 'godIskustva');
+        Schema::table('pacijents', function (Blueprint $table) {
+            $table->after('grad', function ($table) {
+                $table->string('drzava');
+            });
         });
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ObrisiDrzavaPac extends Migration
+class PromeniGodIskustva extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class ObrisiDrzavaPac extends Migration
      */
     public function up()
     {
-        Schema::table('pacijents', function (Blueprint $table) {
-            $table->dropColumn('drzava');
+        Schema::table('zubars', function (Blueprint $table) {
+            $table->renameColumn('godIskustva', 'godine_iskustva');
         });
     }
 
@@ -25,10 +25,8 @@ class ObrisiDrzavaPac extends Migration
      */
     public function down()
     {
-        Schema::table('pacijents', function (Blueprint $table) {
-            $table->after('grad', function ($table) {
-                $table->string('drzava');
-            });
+        Schema::table('zubars', function (Blueprint $table) {
+            $table->renameColumn('godine_iskustva', 'godIskustva');
         });
     }
 }

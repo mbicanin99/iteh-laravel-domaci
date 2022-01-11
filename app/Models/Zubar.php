@@ -15,7 +15,7 @@ class Zubar extends Model
         'ime',
         'prezime',
         'godine_iskustva',
-        'ord_id'
+        'ordinacija_id'
     ];
 
 

@@ -18,7 +18,7 @@ class ZubarFactory extends Factory
             'ime' => $this->faker->firstName(),
             'prezime' => $this->faker->lastName(),
             'godine_iskustva' => $this->faker->numberBetween($min = 0, $max = 55),
-            'ord_id' => Ordinacija::factory()
+            'ordinacija_id' => Ordinacija::factory()
         ];
     }
 }
