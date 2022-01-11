@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OrdinacijaController;
 use App\Http\Controllers\ZubarController;
-use App\Http\Controllers\PacijentController;
+use App\Http\Controllers\API\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +17,11 @@ use App\Http\Controllers\PacijentController;
 |
 */
 
-Route::resource('ordinacija', OrdinacijaController::class);
-Route::resource('zubar', ZubarController::class);
-Route::resource('pacijent', PacijentController::class);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::resource('zubar', ZubarController::class);
+    Route::resource('ordinacija', OrdinacijaController::class);
 });
